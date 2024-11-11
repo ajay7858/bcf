@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Timed ABC Selector</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+    }
+    .container {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 40px 20px;
+      width: 320px;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 30px;
+      color: #ffd700;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+    .result {
+      font-size: 56px;
+      font-weight: bold;
+      color: #ffd700;
+      margin: 20px 0;
+      height: 60px;
+      line-height: 60px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .result.show {
+      opacity: 1;
+    }
+    .btn {
+      padding: 12px 30px;
+      font-size: 18px;
+      color: #ffffff;
+      background: linear-gradient(90deg, #b24592, #f15f79);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:active {
+      transform: scale(0.95);
+      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Discover Your Letter</h1>
+    <div class="result" id="result">-</div>
+    <button class="btn" onclick="showRandomLetter()">Click Me</button>
+  </div>
+
+  <script>
+    function showRandomLetter() {
+      const letters = ["B", "C", "F"];
+      const randomIndex = Math.floor(Math.random() * letters.length);
+      const resultDiv = document.getElementById("result");
+      
+      resultDiv.textContent = letters[randomIndex];
+      resultDiv.classList.add("show"); // Show result
+
+      // Hide result after 4 seconds
+      setTimeout(() => {
+        resultDiv.classList.remove("show");
+        resultDiv.textContent = "-";
+      }, 40000);
+    }
+  </script>
+</body>
+</html>
